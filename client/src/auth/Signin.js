@@ -93,6 +93,13 @@ const Signin = ({ history }) => {
         {isAuth() ? <Redirect to='/' /> : null}
         <h1 className='my-3 text-center'>Signin</h1>
         {signinForm()}
+        <br />
+        <Link
+          to='/auth/password/forgot'
+          className='btn btn-sm btn-outline-danger'
+        >
+          Forgot password
+        </Link>
       </div>
     </Layout>
   );

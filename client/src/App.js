@@ -4,7 +4,9 @@ import Layout from "./core/Layout";
 const App = () => {
   return (
     <Layout>
-      <h1>Hello React</h1>
+      <div className='col-md-6 mx-auto'>
+        <h1 className='text-center my-5'>Inventory Overview</h1>
+      </div>
     </Layout>
   );
 };
