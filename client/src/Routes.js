@@ -10,6 +10,7 @@ import PrivateRoute from "./auth/PrivateRoute";
 import AdminRoute from "./auth/AdminRoute";
 import Forgot from "./auth/Forgot";
 import Reset from "./auth/Reset";
+import CreateInventory from "./inventory/Create";
 
 const Routes = () => {
   return (
@@ -23,6 +24,8 @@ const Routes = () => {
         <AdminRoute path='/admin' component={Admin} />
         <Route path='/auth/password/forgot' component={Forgot} />
         <Route path='/auth/password/reset/:token' component={Reset} />
+
+        <AdminRoute path='/inventory/create' component={CreateInventory} />
       </Switch>
     </Router>
   );

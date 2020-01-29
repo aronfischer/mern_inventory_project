@@ -63,6 +63,18 @@ const Layout = ({ children, match, history }) => {
           </span>
         </li>
       )}
+
+      {isAuth() && isAuth().role === "admin" && (
+        <li className='nav-item'>
+          <Link
+            to='/inventory/create'
+            style={isActive("/inventory/create")}
+            className='nav-link'
+          >
+            New Inventory
+          </Link>
+        </li>
+      )}
     </ul>
   );
 
