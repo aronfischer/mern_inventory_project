@@ -32,3 +32,25 @@ exports.createNewInventory = (req, res) => {
     }
   });
 };
+
+exports.readInventory = (req, res) => {
+  Inventory.find()
+    .then(items => res.json(items))
+    .catch(error => {
+      console.log("ERROR WHEN GETTING INVENTORY FROM DATABASE", error);
+      return res.status(400).json({
+        error: "Ups, cannot get inventory, please refresh page"
+      });
+    });
+};
+
+exports.deleteInventory = (req, res) => {
+  Inventory.findByIdAndDelete(req.body.id)
+    .then(response => res.json(response))
+    .catch(err => {
+      res.status(400).json({
+        error:
+          "Item can't be removed, you don't have the necessary authentication. Please log in."
+      });
+    });
+};
