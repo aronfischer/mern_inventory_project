@@ -11,6 +11,7 @@ import AdminRoute from "./auth/AdminRoute";
 import Forgot from "./auth/Forgot";
 import Reset from "./auth/Reset";
 import CreateInventory from "./inventory/Create";
+import UpdateInventory from "./inventory/Update";
 
 const Routes = () => {
   return (
@@ -26,6 +27,7 @@ const Routes = () => {
         <Route path='/auth/password/reset/:token' component={Reset} />
 
         <AdminRoute path='/inventory/create' component={CreateInventory} />
+        <AdminRoute path='/inventory/update/:id' component={UpdateInventory} />
       </Switch>
     </Router>
   );

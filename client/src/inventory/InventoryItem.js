@@ -18,7 +18,10 @@ const InventoryItem = props => {
           ></i>
         </td>
         <td>
-          <i className='far fa-edit af-icon'></i>
+          <i
+            className='far fa-edit af-icon'
+            onClick={() => props.editItem(props.item._id)}
+          ></i>
         </td>
       </tr>
     </Fragment>

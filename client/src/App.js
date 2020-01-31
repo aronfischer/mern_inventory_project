@@ -4,8 +4,9 @@ import axios from "axios";
 import InventoryItem from "./inventory/InventoryItem";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import { Link, Redirect } from "react-router-dom";
 
-const App = () => {
+const App = ({ history }) => {
   const [inventory, setInventory] = useState([]);
 
   useEffect(() => {
@@ -43,6 +44,10 @@ const App = () => {
     getInventory();
   };
 
+  const editItem = id => {
+    history.push(`/inventory/update/${id}`);
+  };
+
   return (
     <Layout>
       <div className='col-md-10 mx-auto'>
@@ -64,6 +69,7 @@ const App = () => {
                   key={item.name}
                   item={item}
                   deleteItem={deleteItem}
+                  editItem={editItem}
                 />
               );
             })}

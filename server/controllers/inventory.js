@@ -46,11 +46,56 @@ exports.readInventory = (req, res) => {
 
 exports.deleteInventory = (req, res) => {
   Inventory.findByIdAndDelete(req.body.id)
-    .then(response => res.json(response))
+    .then(response => {
+      res.json(response);
+    })
     .catch(err => {
       res.status(400).json({
         error:
           "Item can't be removed, you don't have the necessary authentication. Please log in."
       });
     });
+};
+
+exports.getSingleItem = (req, res) => {
+  console.log("REQ.BODY", req.body);
+
+  Inventory.findById(req.body.id)
+    .then(response => {
+      res.json(response);
+    })
+    .catch(error => {
+      res.status(400).json({
+        error: "Couldn't get item"
+      });
+    });
+};
+
+exports.updateInventory = (req, res) => {
+  const { id, name, amount, category } = req.body;
+
+  Inventory.findById(id).exec((err, item) => {
+    if (err || !item) {
+      return res.status(400).json({
+        error: "User can't be updated, please go back and try again"
+      });
+    } else {
+      item.name = name;
+      item.amount = amount;
+      item.category = category;
+
+      item.save((err, updatedItem) => {
+        if (err) {
+          console.log("ITEM UPDATE ERROR", err);
+          return res.status(400).json({
+            error: "Item update failed"
+          });
+        }
+        res.json({
+          message: "Item updated successfully"
+        });
+      });
+    }
+  });
+  console.log("Item is updated from Backend", req.body.id);
 };

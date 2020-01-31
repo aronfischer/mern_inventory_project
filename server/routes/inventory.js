@@ -5,7 +5,9 @@ const router = express.Router();
 const {
   createNewInventory,
   readInventory,
-  deleteInventory
+  deleteInventory,
+  updateInventory,
+  getSingleItem
 } = require("../controllers/inventory");
 
 // import validators
@@ -14,5 +16,7 @@ const {
 router.post("/inventory/create", createNewInventory);
 router.get("/inventory", readInventory);
 router.delete("/inventory", deleteInventory);
+router.post("/inventory/update", getSingleItem);
+router.put("/inventory/update", updateInventory);
 
 module.exports = router;
