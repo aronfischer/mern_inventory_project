@@ -8,9 +8,9 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const Create = () => {
   const [values, setValues] = useState({
-    name: "iPhone",
-    amount: 20,
-    category: "Electronics",
+    name: "",
+    amount: 0,
+    category: "",
     buttonText: "Submit"
   });
 

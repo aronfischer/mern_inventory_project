@@ -4,7 +4,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-const Update = ({ match }) => {
+const Update = ({ match, history }) => {
   const [values, setValues] = useState({
     name: "",
     amount: 0,
@@ -38,6 +38,10 @@ const Update = ({ match }) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
+  const redirectToHome = () => {
+    history.push("/");
+  };
+
   const clickSubmit = event => {
     event.preventDefault();
     setValues({
@@ -59,7 +63,10 @@ const Update = ({ match }) => {
           category: "",
           buttonText: "Submitted"
         });
-        toast.success(response.data.message);
+        toast.success(
+          response.data.message + ". You will be redirected to home"
+        );
+        setTimeout(redirectToHome, 3500);
       })
       .catch(error => {
         console.log("INVENTORY UPDATE ERROR", error.response.data);
